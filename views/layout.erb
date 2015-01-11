@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/css/magic/magic.min.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+  <title>GITRON - <%= "#{@title}" %></title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div id="content">
+      <div id="logo">Welcome to <span style="color: #ffd220">GIT</span><span style="color: #54d8ef">RON</span></div>
+      <%= yield %>
+    </div>
+
+<%# show new achievements if unlocked %>
+
+<% @achievements.each do |message| %>
+<script type="text/javascript">
+
+$(document).ready(function() {
+  noty({
+      text     : '<div id="achieve_box"><strong>ACHIEVEMENT UNLOCKED:</strong><br />"<%= message %>"</div>',
+      layout   : 'bottomRight',
+      type     : 'information',
+      theme    : 'custom',
+      killer   : false,
+      closeWith: ['click']
+  });
+});
+
+</script>
+<% end %>
+
+<% if @achievements.size > 0 %>
+<script type="text/javascript">
+$(document).ready(function() {
+    sound = 'scherzo';
+
+    if (window.HTMLAudioElement) {
+        var snd = new Audio('');
+
+        if (snd.canPlayType('audio/ogg')) {
+            snd = new Audio('/sounds/' + sound + '.ogg');
+        }
+        else if (snd.canPlayType('audio/mp3')) {
+            snd = new Audio('/sounds/' + sound + '.mp3');
+        }
+
+        snd.play();
+    }
+});
+</script>
+<% end %>
+
+    <div id="footer">
+      <%= erb :footer %>
+    </div>
+  </div>
+</body>
+</html>

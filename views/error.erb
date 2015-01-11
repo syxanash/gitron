@@ -1,0 +1,42 @@
+<%
+@title = 'Error'
+%>
+
+<div id="button_menu">
+<p>
+  <a class="button_link" href="/">back</a>
+</p>
+</div>
+
+<div id="message_box">
+  <p>
+    Error: <%= @error_message %>
+    <br />
+    informing MCP immediately!
+  </p>
+</div>
+
+<div align="center" style="display: none" id="recognizer" name="recognizer"></div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    setTimeout(function(){
+        var div_name = "recognizer";
+
+        $("#" + div_name).append(function(){
+            var image_tag = "<img src='/img/characters-extra/" + div_name + ".png' alt='recognizer' />";
+            
+            return image_tag;
+        });
+
+        document.getElementById(div_name).style.display = 'block';
+        $('#' + div_name).addClass('magictime tinUpIn');
+    }, 2000);
+
+    setTimeout(function(){
+        $('#recognizer').removeClass().addClass('magictime swashOut');
+    }, 5000);
+});
+
+</script>

@@ -1,0 +1,54 @@
+<%
+@title = 'Welcome'
+%>
+
+<% if achieved?('THE CREATOR') %>
+<img src="/img/characters-extra/special-logo.gif" alt="awesome logo">
+<% else %>
+<img src="/img/characters-extra/logo.png" alt="logo">
+<% end %>
+
+<div id="bit" name="bit" style="position: absolute; top: 30px; left: 30px; display: none;"></div>
+
+<form method="GET" action="/">
+	<p>Enter a github repository</p>
+    <input name="first_repo" size="20" type="text" placeholder="torvalds/linux" /><br>
+  <p>now enter a different github repository</p>
+    <input name="second_repo" size="20" type="text" placeholder="angular/angular.js" /><br><br>
+
+	<input class="button_link" type="submit" value="fight!" />
+</form>
+
+<script type="text/javascript">
+
+$('#bit').hover(function(){
+    $('#bit').removeClass().addClass('magictime foolishOut');
+});
+
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    setTimeout(function(){
+        var div_name = "bit";
+
+        var images = ["true.gif", "false.gif", "bit.gif"];
+
+        $("#" + div_name).append(function(){
+            var random = Math.floor(Math.random() * images.length);
+            var image_tag = "<img src='/img/bit/" + images[random] + "' alt='animation' />";
+            
+            return image_tag;
+        });
+
+        if (Math.floor(Math.random() * 2) > 0) {
+            document.getElementById(div_name).style.display = 'block';
+            console.log("Grid: greetings user, for now Bit doesn't have a specific purpose on this grid, but he will in the future!")
+        }
+
+        $('#' + div_name).addClass('magictime foolishIn');
+    }, 2000);
+});
+
+</script>

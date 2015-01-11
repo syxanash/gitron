@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+  @font-face {
+      font-family: "ArcadeClassic";
+      src: url("/font/ArcadeClassic.otf") format("opentype");
+  }
+
+  body {
+      font-family: "ArcadeClassic";
+      font-size: 20px;
+      letter-spacing: 2px;
+      word-spacing: 0.5em;
+      color: white;
+      text-align: justify;
+
+      background: url(/img/busted.gif) no-repeat center center fixed; 
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+          margin: 0px
+  }
+
+  #container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      height: 250px;
+      width: 400px;
+
+      text-align: center;
+  }
+  </style>
+
+  <title>GITRON - <%= "#{@title}" %></title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
+<body>
+  <div id="container">
+    <%= yield %>
+  </div>
+</body>
+</html>
