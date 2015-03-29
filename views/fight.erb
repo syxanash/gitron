@@ -23,7 +23,7 @@ winner = @players[@winner]
       <div style="width: 88px; float: left">
         <img src="/img/characters/<%= player[:avatar] + ext %>" alt="avatar">
       </div>
-      <div id="disk" name="disk" style="width: 77px; float: right; display: none;"></div>
+      <div id="disk" style="width: 77px; float: right; display: none;"></div>
     </div>
   <% else %>
     <p><b><%= player[:repo] %></b> has been <b>derezzed</b></p>
@@ -36,7 +36,7 @@ winner = @players[@winner]
       <div style="padding-left: 5px; position: absolute;">
         <img src="/img/characters/<%= player[:avatar] + ext %>" alt="avatar">
       </div>
-      <div id="derezzed" name="derezzed" style="position: absolute; display: none;"></div>
+      <div id="derezzed" style="position: absolute; display: none;"></div>
     </div>
   <% end %>
 <% end %>

@@ -1,1 +1,11 @@
-<p>&copy; Gitron <%= Time.now.year %><br /><br /><a class="button_link" href="http://twitter.com/intent/tweet?url=http://gitron.herokuapp.com/&amp;text=Greetings programs let's fight on GITRON&amp;hashtags=gitron">share</a> <a class="button_link" href="https://github.com/syxanash/gitron">fork</a> <a class="button_link" href="https://github.com/syxanash">follow</a>
+<%
+@twitter_link = ""
+
+if @players.nil?
+  @twitter_link = "http://twitter.com/intent/tweet?url=http://gitron.herokuapp.com/&amp;text=Greetings%20programs%20let's%20fight%20on&amp;hashtags=gitron"
+else
+  @twitter_link = "http://twitter.com/intent/tweet?url=http://gitron.herokuapp.com/&amp;text=Check%20out%20#{@players[0][:repo].capitalize}%20vs%20#{@players[1][:repo].capitalize}%20on&amp;hashtags=gitron"
+end
+%>
+
+<p>&copy; Gitron <%= Time.now.year %><br /><br /><a class="button_link" href="<%= @twitter_link %>">share</a> <a class="button_link" href="https://github.com/syxanash/gitron">fork</a> <a class="button_link" href="https://github.com/syxanash">follow</a></p>
