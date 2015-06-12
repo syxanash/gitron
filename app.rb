@@ -136,7 +136,21 @@ get '/:first_name/:first_repo/vs/:second_name/:second_repo/?' do
 
   pp @players
 
-  @winner = check_winner(@players[0][:score], @players[1][:score])
+  # compare two scores to choose the higher for winner
+  # if tie then randomly choose the winner
+  # the winner is identified by an index between 0 and 1
+  # this index is used to access to the item in @players
+  # @winner will be also used in views file fight.erb
+
+  if @players[0][:score] > @players[1][:score]
+    @winner = 0
+  elsif @players[0][:score] < @players[1][:score]
+    @winner = 1
+  else
+    @winner = Random.rand(2)
+  end
+
+  puts "Winner is: #{@players[@winner][:repo]}"
 
   # check if new achievements have been unlocked
 
@@ -286,26 +300,4 @@ def get_github(sanitized_github_url)
   repo = sanitized_github_url.split('/')[4]
 
   return user, repo
-end
-
-# Public: Calculate the winner of the fight
-# based on the score number of the two players.
-#
-# first_score  - first player score
-# second_score - second player score
-#
-# Returns the winner as binary number 0 or 1.
-def check_winner(first_score, second_score)
-  first_random = Random.rand(first_score) + 1
-  second_random = Random.rand(second_score) + 1
-
-  winner ||= 0
-
-  if first_random < second_random
-    winner = 1
-  elsif first_random == second_random
-    winner = Random.rand(2) + 1
-  end
-
-  winner
 end

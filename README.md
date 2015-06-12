@@ -18,7 +18,7 @@ The score is based on:
 
 **issues** instead will be subtracted to the main score of your repository.
 The avatar is generated based on your repository **stars**, more stars it gets more important is the character generated :sunglasses:
-Winner is chosen *randomly* according to the higher score of the two programs fighting.
+Winner is chosen according to the higher score of the two programs fighting.
 
 Beware the program who loses will be subject to immediate **deresolution**!
 
