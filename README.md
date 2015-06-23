@@ -66,7 +66,6 @@ Here listed a few things I used for developing this project.
 ## Bugs & known issues
 
 * Fetching the number of commits for a repo has a few problems, I need to get the number of commits without wasting too many [requests per hour](https://developer.github.com/v3/rate_limit/).
-* Sometimes a wild ```undefined method `[]' for nil:NilClass``` appears.
 * __MCP__ apparently is still alive…
 
 ## Easter eggs
