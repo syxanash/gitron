@@ -66,6 +66,7 @@ Here listed a few things I used for developing this project.
 ## Bugs & known issues
 
 * Fetching the number of commits for a repo has a few problems, I need to get the number of commits without wasting too many [requests per hour](https://developer.github.com/v3/rate_limit/).
+* When fighting against _Jarvis_ avatar the player always wins even if the score is lower than the opponent. (need to investigate)
 * __MCP__ apparently is still alive…
 
 ## Easter eggs
