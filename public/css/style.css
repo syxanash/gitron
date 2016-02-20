@@ -42,7 +42,13 @@ body {
     font-size: 30px;
     color: white;
     padding-top: 5px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
+}
+
+/* mascot (the real image displayed in homepage) */
+
+#mascot {
+    padding-bottom: 20px;
 }
 
 /* container */
@@ -77,7 +83,7 @@ body {
 /* button menu */
 
 #button_menu {
-    padding-bottom: 1px;
+    padding-bottom: 20px;
 }
 
 #button_menu a {
@@ -134,21 +140,21 @@ input {
 /* place holder for the input box */
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #997e13;
+    color:    #51533b;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #997e13;
+   color:    #51533b;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #997e13;
+   color:    #51533b;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #997e13;
+   color:    #51533b;
 }
 :placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
-  color:    #997e13;
+  color:    #51533b;
 }
 
 /* info_box */

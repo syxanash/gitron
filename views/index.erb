@@ -2,14 +2,16 @@
 @title = 'Welcome'
 %>
 
-<%# if some achievements are unlocked change the logo %>
-<% if achieved?('THE CREATOR') %>
-<img src="/img/characters-extra/special-logo.gif" alt="super awesome logo">
-<% elsif achieved?('BETRAYAL') %>
-<img src="/img/characters-extra/recognizer.png" alt="awesome logo">
-<% else %>
-<img src="/img/characters-extra/logo.png" alt="logo">
-<% end %>
+<div id="mascot">
+    <%# if some achievements are unlocked change the logo %>
+    <% if achieved?('THE CREATOR') %>
+    <img src="/img/characters-extra/special-logo.gif" alt="super awesome logo">
+    <% elsif achieved?('BETRAYAL') %>
+    <img src="/img/characters-extra/recognizer.png" alt="awesome logo">
+    <% else %>
+    <img src="/img/characters-extra/logo.png" alt="logo">
+    <% end %>
+</div>
 
 <div id="bit" style="position: absolute; top: 30px; left: 30px; display: none;"></div>
 
