@@ -13,6 +13,8 @@ winner = @players[@winner]
 @players.each_with_index do |player, i|
 
   # extension is specified for gif avatars
+  # this is a very ugly solution but we need it for now
+  # because MCP avatar is the only gif file.
   ext = player[:avatar] =~ %r{^.*\.(.*?)$} ? '' : '.png'
 
   if i == @winner

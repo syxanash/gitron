@@ -6,8 +6,9 @@ require './lib/Github'
 require 'pp'
 
 # Public: github.com API key used in order to have higher rate limit
-GITHUB_API_KEY = 'YOUR GITHUB API KEY HERE!!!'
-COOKIE_NAME = 'ach'
+GITHUB_API_KEY = 'ENTER YOUR GITHUB API KEY HERE!!!'.freeze
+
+COOKIE_NAME = 'ach'.freeze
 
 set :show_exceptions, false
 

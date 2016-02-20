@@ -2,8 +2,11 @@
 @title = 'Welcome'
 %>
 
+<%# if some achievements are unlocked change the logo %>
 <% if achieved?('THE CREATOR') %>
-<img src="/img/characters-extra/special-logo.gif" alt="awesome logo">
+<img src="/img/characters-extra/special-logo.gif" alt="super awesome logo">
+<% elsif achieved?('BETRAYAL') %>
+<img src="/img/characters-extra/recognizer.png" alt="awesome logo">
 <% else %>
 <img src="/img/characters-extra/logo.png" alt="logo">
 <% end %>
@@ -11,7 +14,7 @@
 <div id="bit" style="position: absolute; top: 30px; left: 30px; display: none;"></div>
 
 <form method="GET" action="/">
-	<p>Enter a github repository<lp>
+	<p>Enter a github repository (url works too)<p>
     <input name="first_repo" size="20" type="text" placeholder="emacs-mirror/emacs" /><br>
   <p>now enter a different github repository</p>
     <input name="second_repo" size="20" type="text" placeholder="vim/vim" /><br><br>
