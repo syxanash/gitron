@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://gitron.herokuapp.com"><img src="http://i.imgur.com/gIdWZUt.png" alt="gitron logo" /></a>
+  <a href="http://gitron.herokuapp.com"><img src="http://i.imgur.com/6BG1Msb.png" alt="gitron logo" /></a>
 </p>
 
 # Gitron
@@ -18,6 +18,7 @@ The score is based on:
 
 **issues** instead will be subtracted to the main score of your repository.
 The avatar is generated based on your repository **stars**, more stars it gets more important is the character generated :sunglasses:
+
 Winner is chosen according to the higher score of the two programs fighting.
 
 Beware the program who loses will be subject to immediate **deresolution**!
@@ -66,8 +67,7 @@ Here listed a few things I used for developing this project.
 ## Bugs & known issues
 
 * Fetching the number of commits for a repo has a few problems, I need to get the number of commits without wasting too many [requests per hour](https://developer.github.com/v3/rate_limit/).
-* When fighting against _Jarvis_ avatar the player always wins even if the score is lower than the opponent. (need to investigate)
-* __MCP__ apparently is still alive…
+* __MCP__ apparently is still alive...
 
 ## Easter eggs
 
