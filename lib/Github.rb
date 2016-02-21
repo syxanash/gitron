@@ -7,7 +7,7 @@ class RateLimitError < StandardError; end
 # Github repos.
 class Github
   # Public: json file containing avatars file name.
-  AVATAR_LIST = 'public/avatar_list.json'
+  AVATAR_LIST = 'public/avatar_list.json'.freeze
 
   # array positions for avatar types
   OLD_GRID_AVATARS = 0
@@ -47,12 +47,32 @@ class Github
     raise RepoNotFoundError, 'repository does not exist!' unless @client.repository? @my_repository
   end
 
+  # Public: get branches and number of commits for a repository
+  #
+  # Returns number of branchesPu
+  # Returns number of commits
+  def additional_disk_info
+    raise "repository hasn't been set!" unless @my_repository
+
+    # get the number of branches for a repository
+    branches = @client.branches(@my_repository).size
+
+    # get the number of commits, if number is higher than 100
+    # than will be returned the string 100+
+
+    commits_number = @client.commits(@my_repository).size
+    commits_string = commits_number >= 100 ? '100+' : commits_number
+
+    return branches, commits_string
+  end
+
+
   # Public: Calculate a score from public github repository
   # information.
   #
   # Returns the score calculated.
   def score
-    fail "repository hasn't been set!" unless @my_repository
+    raise "repository hasn't been set!" unless @my_repository
 
     issues ||= 0
     score ||= 0
@@ -69,8 +89,6 @@ class Github
 
     # calculate score
 
-    pp "PLAYER STATS: #{player}"
-
     positive = player[:size] + player[:commit] + player[:forks]
 
     if issues < positive
@@ -85,15 +103,13 @@ class Github
   # Returns avatar file name.
   # Returns disk gif file name.
   def generate_avatar
-    fail "repository hasn't been set!" unless @my_repository
+    raise "repository hasn't been set!" unless @my_repository
 
     json_file_content = File.read(AVATAR_LIST)
     avatars = JSON.parse(json_file_content)
 
     stars = @client.repository(@my_repository).stargazers_count
     date = @client.repository(@my_repository).created_at
-
-    puts "STARS COUNT: #{stars}"
 
     # check if repo owner is github staff
 

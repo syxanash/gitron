@@ -3,10 +3,8 @@ require 'json'
 require 'base64'
 require './lib/Github'
 
-require 'pp'
-
 # Public: github.com API key used in order to have higher rate limit
-GITHUB_API_KEY = 'ENTER YOUR GITHUB API KEY HERE!!!'.freeze
+GITHUB_API_KEY = 'PLACE YOUR GITHUB API KEY HERE!!!'.freeze
 
 COOKIE_NAME = 'ach'.freeze
 
@@ -121,21 +119,17 @@ get '/:first_name/:first_repo/vs/:second_name/:second_repo/?' do
     redirect '/errors/limit'
   end
 
-  @players.each_with_index do |player, i|
+  @players.each do |player|
     begin
       github.set_repository(player[:name], player[:repo])
 
       player[:score] = github.score
       player[:avatar], player[:disk] = github.generate_avatar
-
-      puts "#{i + 1} PLAYER SCORE: #{player[:score]}"
-      puts "AVATAR: #{player[:avatar]}"
+      player[:branches], player[:commits] = github.additional_disk_info
     rescue RepoNotFoundError
       redirect '/errors/reponame'
     end
   end
-
-  pp @players
 
   # compare two scores to choose the higher for winner
   # if tie then randomly choose the winner
@@ -150,8 +144,6 @@ get '/:first_name/:first_repo/vs/:second_name/:second_repo/?' do
   else
     @winner = Random.rand(2)
   end
-
-  puts "Winner is: #{@players[@winner][:repo]}"
 
   # check if new achievements have been unlocked
 

@@ -47,7 +47,7 @@ winner = @players[@winner]
 
 $('#disk').click(function(){
   noty({
-      text     : '<div id="info_box">program: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>" target="_blank"><%= winner[:repo] %></a> <br /> user: <%= winner[:name] %> <br /> score: <%= winner[:score] %></div>',
+      text     : '<div id="info_box">program: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>" target="_blank"><%= winner[:repo] %></a> <br /> user: <%= winner[:name] %> <br /> score: <%= winner[:score] %> <br /> branches: <%= winner[:branches] %> <br /> commits: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>/commits/master" target="_blank"><%= winner[:commits] %></a></div>',
       layout   : 'topRight',
       type     : 'information',
       theme    : 'custom',
