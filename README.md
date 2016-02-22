@@ -6,7 +6,7 @@
 
 >Greetings, programs!
 
-Have you ever wondered how your *github repository* would look like on a **TRON grid**? Well now you can...
+Have you ever wondered how your *github repository* would look like on a **TRON grid**?
 
 ## Description
 
