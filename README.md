@@ -6,9 +6,11 @@
 
 >Greetings, programs!
 
+Have you ever wondered how your *github repository* would look like on a **TRON grid**? Well now you can...
+
 ## Description
 
-This is a web game based on [TRON](http://en.wikipedia.org/wiki/Tron) universe. Every repository on GitHub can be a TRON character *(sam, clu, flynn, tron, etc.)* and may fight against other repositories.
+This is a web game based on [TRON](http://en.wikipedia.org/wiki/Tron) universe. Every repository on GitHub can be a TRON character *(sam, clu, flynn, tron, etc.)* and can fight against other repositories.
 
 The score is based on:
 
@@ -31,7 +33,7 @@ These are just a few achievements you can unlock in **Gitron**.
 
 Achievement | :sparkles:
 ----------- | -----
-THE GRID | Enter The Grid 
+THE GRID | Enter The Grid
 FOUND ZUSE | Find a way to see Zuse *(the guy with the white hair)*
 ISOMORPHIC | Discover and ISO
 PURGE | Dereze an ISO

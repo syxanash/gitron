@@ -99,6 +99,8 @@ class Github
   end
 
   # Public: generate avatar based on public repository information.
+  # Both disk and avatar name are values contained
+  # in avatar_list.json file.
   #
   # Returns avatar file name.
   # Returns disk gif file name.

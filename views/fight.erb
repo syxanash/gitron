@@ -1,6 +1,9 @@
 <%
 @title = "#{@players[0][:repo].capitalize} vs #{@players[1][:repo].capitalize}"
 winner = @players[@winner]
+
+# beautify avatar file in order to show character name in disk info box
+character_name = winner[:avatar].gsub('_', ' ')[/.*(?=\..+$)/]
 %>
 
 <div id="button_menu">
@@ -11,19 +14,13 @@ winner = @players[@winner]
 
 <%
 @players.each_with_index do |player, i|
-
-  # extension is specified for gif avatars
-  # this is a very ugly solution but we need it for now
-  # because MCP avatar is the only gif file.
-  ext = player[:avatar] =~ %r{^.*\.(.*?)$} ? '' : '.png'
-
   if i == @winner
 %>
     <p>Winner is <b><%= player[:repo] %></b>!</p>
 
     <div style="width: 180px; height: 168px; margin: auto;">
       <div style="width: 88px; float: left">
-        <img src="/img/characters/<%= player[:avatar] + ext %>" alt="avatar">
+        <img src="/img/characters/<%= player[:avatar] %>" alt="avatar">
       </div>
       <div id="disk" style="width: 77px; float: right; display: none;"></div>
     </div>
@@ -31,12 +28,12 @@ winner = @players[@winner]
     <p><b><%= player[:repo] %></b> has been <b>derezzed</b>...</p>
 
     <% if player[:avatar] == 'jarvis' %>
-      <p><span style="color: #ffd220"><i>"Death to the Users!"</i></span></p>     
+      <p><span style="color: #ffd220"><i>"Death to the Users!"</i></span></p>
     <% end %>
 
     <div style="width: 96px; height: 172px; position: relative; margin: auto;">
       <div style="padding-left: 5px; position: absolute;">
-        <img src="/img/characters/<%= player[:avatar] + ext %>" alt="avatar">
+        <img src="/img/characters/<%= player[:avatar] %>" alt="avatar">
       </div>
       <div id="derezzed" style="position: absolute; display: none;"></div>
     </div>
@@ -47,7 +44,7 @@ winner = @players[@winner]
 
 $('#disk').click(function(){
   noty({
-      text     : '<div id="info_box">program: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>" target="_blank"><%= winner[:repo] %></a> <br /> user: <%= winner[:name] %> <br /> score: <%= winner[:score] %> <br /> branches: <%= winner[:branches] %> <br /> commits: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>/commits/master" target="_blank"><%= winner[:commits] %></a></div>',
+      text     : '<div id="info_box">program: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>" target="_blank"><%= winner[:repo] %></a> <br /> user: <%= winner[:name] %> <br /> branches: <%= winner[:branches] %> <br /> commits: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>/commits/master" target="_blank"><%= winner[:commits] %></a> <br /> character: <a href="http://tron.wikia.com/wiki/Special:Search?search=<%= character_name %>&fulltext=Search" target="_blank"><%= character_name %></a> <br /> score: <%= winner[:score] %></div>',
       layout   : 'topRight',
       type     : 'information',
       theme    : 'custom',
@@ -65,8 +62,7 @@ $(document).ready(function() {
         var div_name = "disk";
 
         $("#" + div_name).append(function(){
-            var image_tag = "<a href='#'><img src='/img/disk/<%= winner[:disk] %>.gif' alt='animation' /></a>";
-            
+            var image_tag = "<a href='#'><img src='/img/disk/<%= winner[:disk] %>' alt='animation' /></a>";
             return image_tag;
         });
 
@@ -79,7 +75,6 @@ $(document).ready(function() {
 
         $("#" + div_name).append(function(){
             var image_tag = "<img src='/img/characters-extra/derezzed.png' alt='derezzed-animation' />";
-            
             return image_tag;
         });
 

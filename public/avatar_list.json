@@ -1,92 +1,92 @@
 {
     "100000": {
-        "kevin_flynn": "black-blue"
+        "kevin_flynn.png": "black-blue.gif"
     },
 
     "50000": {
-        "mcp.gif": "red-white"
+        "mcp.gif": "red-white.gif"
     },
 
     "20500": {
-        "jet": "blue-purple"
+        "jet.png": "blue-purple.gif"
     },
 
     "10000": [
-        { "tron": "blue-white" },
-        { "tron_uprising": "blue-white-new" },
-        { "ophelia": "blue-white-new" }
+        { "tron.png": "blue-white.gif" },
+        { "tron_uprising.png": "blue-white-new.gif" },
+        { "ophelia.png": "blue-white-new.gif" }
     ],
 
     "5500": [
-        { "sark": "red-white" },
-        { "clu2": "black-yellow" },
-        { "giles": "black-blue" }
+        { "sark.png": "red-white.gif" },
+        { "clu2.png": "black-yellow.gif" },
+        { "giles.png": "black-blue.gif" }
     ],
 
     "5000": [
-        { "flynn": "blue-white" },
-        { "rinzler_converted": "black-blue" },
-        { "quorra": "black-blue" }
+        { "flynn.png": "blue-white.gif" },
+        { "rinzler_converted.png": "black-blue.gif" },
+        { "quorra.png": "black-blue.gif" }
     ],
-    
+
     "2500": [
-        { "flynn_converted": "red-white" },
-        { "rinzler": "black-red" },
-        { "ada": "black-blue" }
+        { "flynn_converted.png": "red-white.gif" },
+        { "rinzler.png": "black-red.gif" },
+        { "ada.png": "black-blue.gif" }
     ],
 
     "1500": [
-        { "clu": "yellow-white" },
-        { "sam": "black-blue" },
-        { "calchas": "black-blue" }
+        { "clu.png": "yellow-white.gif" },
+        { "sam.png": "black-blue.gif" },
+        { "calchas.png": "black-blue.gif" }
     ],
 
     "1000": [
-        { "yori": "blue-white" },
-        { "jarvis": "black-red" },
-        { "young_iso_male": "black-blue" }
+        { "yori.png": "blue-white.gif" },
+        { "jarvis.png": "black-red.gif" },
+        { "young_iso_male.png": "black-blue.gif" }
     ],
 
     "500": [
-        { "ram": "blue-white" },
-        { "dyson": "black-red" },
-        { "young_iso_female": "black-blue" }
+        { "ram.png": "blue-white.gif" },
+        { "dyson.png": "black-red.gif" },
+        { "young_iso_female.png": "black-blue.gif" }
     ],
 
     "250": [
-        { "sarks_lieutenant": "red-white" },
-        { "paige": "black-red" },
-        { "old_iso_male": "black-blue" }
+        { "sarks_lieutenant.png": "red-white.gif" },
+        { "paige.png": "black-red.gif" },
+        { "old_iso_male.png": "black-blue.gif" }
     ],
-    
+
 
     "200": [
-        { "guard": "red-white" },
-        { "black_guard": "black-red" },
-        { "iso_female_1": "black-blue" }
+        { "guard.png": "red-white.gif" },
+        { "black_guard.png": "black-red.gif" },
+        { "iso_female_1.png": "black-blue.gif" }
     ],
 
     "150": [
-        { "dumont": "blue-white" },
-        { "perl": "black-blue" },
-        { "iso_male_1": "black-blue" }
+        { "dumont.png": "blue-white.gif" },
+        { "perl.png": "black-blue.gif" },
+        { "iso_male_1.png": "black-blue.gif" }
     ],
 
     "100": [
-        { "data_pusher_old_1": "yellow-white" },
-        { "damaged_program": "black-blue" },
-        { "iso_male_2": "black-blue" }
+        { "data_pusher_old_1.png": "yellow-white.gif" },
+        { "damaged_program.png": "black-blue.gif" },
+        { "iso_male_2.png": "black-blue.gif" }
     ],
 
     "50": [
-        { "data_pusher_old_2": "red-white" },
-        { "data_pusher_new_1": "black-blue" },
-        { "iso_male_3": "black-blue" }
+        { "data_pusher_old_2.png": "red-white.gif" },
+        { "data_pusher_new_1.png": "black-blue.gif" },
+        { "iso_male_3.png": "black-blue.gif" }
     ],
 
     "0": [
-        { "data_pusher_old_3": "yellow-white" },
-        { "data_pusher_new_2": "black-blue" },
-        { "iso_female_3": "black-blue" }
+        { "data_pusher_old_3.png": "yellow-white.gif" },
+        { "data_pusher_new_2.png": "black-blue.gif" },
+        { "iso_female_3.png": "black-blue.gif" }
     ]
 }
