@@ -25,7 +25,7 @@ character_name = winner[:avatar].gsub('_', ' ')[/.*(?=\..+$)/]
       <div id="disk" style="width: 77px; float: right; display: none;"></div>
     </div>
   <% else %>
-    <p><b><%= player[:repo] %></b> has been <b>derezzed</b>...</p>
+    <p><b><%= player[:repo] %></b> has been <b><span id="blinky">derezzed</span></b></p>
 
     <% if player[:avatar] == 'jarvis' %>
       <p><span style="color: #ffd220"><i>"Death to the Users!"</i></span></p>
@@ -41,6 +41,18 @@ character_name = winner[:avatar].gsub('_', ' ')[/.*(?=\..+$)/]
 <% end %>
 
 <script type="text/javascript">
+
+function getRandomColor() {
+    var colors = ['ffffff', '54d8ef', '00ff00', 'ffd220']
+    var color = '#' + colors[Math.floor(Math.random() * colors.length)];
+    return color;
+}
+
+$(document).ready(function() {
+  setInterval(function(){
+      document.getElementById('blinky').style.color = getRandomColor();
+  }, 100);
+});
 
 $('#disk').click(function(){
   noty({
