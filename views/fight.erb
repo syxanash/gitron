@@ -1,6 +1,15 @@
 <%
 @title = "#{@players[0][:repo].capitalize} vs #{@players[1][:repo].capitalize}"
-winner = @players[@winner]
+winner = @players[@winner_index]
+loser = @players[@loser_index]
+
+# choose which derezzed image to display 
+# for the looser checking the disk color
+derezzed_img = 'derezzed-red.png'
+
+if loser[:disk] =~ %r{blue}
+  derezzed_img = 'derezzed-blue.png'
+end
 
 # beautify avatar file in order to show character name in disk info box
 character_name = winner[:avatar].gsub('_', ' ')[/.*(?=\..+$)/]
@@ -14,7 +23,7 @@ character_name = winner[:avatar].gsub('_', ' ')[/.*(?=\..+$)/]
 
 <%
 @players.each_with_index do |player, i|
-  if i == @winner
+  if i == @winner_index
 %>
     <p>Winner is <b><%= player[:repo] %></b>!</p>
 
@@ -27,12 +36,12 @@ character_name = winner[:avatar].gsub('_', ' ')[/.*(?=\..+$)/]
   <% else %>
     <p><b><%= player[:repo] %></b> has been <b><span id="blinky">derezzed</span></b></p>
 
-    <% if player[:avatar] == 'jarvis' %>
+    <% if player[:avatar] == 'jarvis.png' %>
       <p><span style="color: #ffd220"><i>"Death to the Users!"</i></span></p>
     <% end %>
 
     <div style="width: 96px; height: 172px; position: relative; margin: auto;">
-      <div style="padding-left: 5px; position: absolute;">
+      <div style="position: absolute;">
         <img src="/img/characters/<%= player[:avatar] %>" alt="avatar">
       </div>
       <div id="derezzed" style="position: absolute; display: none;"></div>
@@ -86,7 +95,7 @@ $(document).ready(function() {
       var div_name = "derezzed";
 
         $("#" + div_name).append(function(){
-            var image_tag = "<img src='/img/characters-extra/derezzed.png' alt='derezzed-animation' />";
+            var image_tag = "<img src='/img/characters-extra/<%= derezzed_img %>' alt='derezzed-animation' />";
             return image_tag;
         });
 

@@ -135,32 +135,33 @@ get '/:first_name/:first_repo/vs/:second_name/:second_repo/?' do
   # if tie then randomly choose the winner
   # the winner is identified by an index between 0 and 1
   # this index is used to access to the item in @players
-  # @winner will be also used in views file fight.erb
+
+  # @winner_index and @loser_index
+  # will be also used in views file fight.erb
 
   if @players[0][:score] > @players[1][:score]
-    @winner = 0
+    @winner_index = 0
   elsif @players[0][:score] < @players[1][:score]
-    @winner = 1
+    @winner_index = 1
   else
-    @winner = Random.rand(2)
+    @winner_index = Random.rand(2)
   end
 
   # check if new achievements have been unlocked
-
   # okay, the following code block is just pure shit
-  # I'll update it on next release, I swear!
+  # I'll update it one day, I swear!
 
-  loser = (@winner + 1) % 2
+  @loser_index = (@winner_index + 1) % 2
 
   @players.each_with_index do |player, i|
-    if i == @winner
-      if (player[:avatar] == 'rinzler' || player[:avatar] == 'tron_uprising') &&
+    if i == @winner_index
+      if (player[:avatar] == 'rinzler.png' || player[:avatar] == 'tron_uprising.png') &&
         !achieved?(@achievement_list[:tron])
         @achievements.push(@achievement_list[:tron])
-      elsif player[:avatar] == 'clu2' &&
-        (@players[loser][:avatar] == 'rinzler_converted' ||
-          @players[loser][:avatar] == 'tron' ||
-          @players[loser][:avatar] == 'tron_uprising') &&
+      elsif player[:avatar] == 'clu2.png' &&
+        (@players[@loser_index][:avatar] == 'rinzler_converted.png' ||
+          @players[@loser_index][:avatar] == 'tron.png' ||
+          @players[@loser_index][:avatar] == 'tron_uprising.png') &&
         !achieved?(@achievement_list[:betrayal])
         @achievements.push(@achievement_list[:betrayal])
       end
@@ -169,13 +170,13 @@ get '/:first_name/:first_repo/vs/:second_name/:second_repo/?' do
       if iso_avatar?(player[:avatar]) && !achieved?(@achievement_list[:iso])
         @achievements.push(@achievement_list[:iso])
       elsif (!iso_avatar?(player[:avatar]) &&
-        iso_avatar?(@players[loser][:avatar])) && !achieved?(@achievement_list[:purge])
+        iso_avatar?(@players[@loser_index][:avatar])) && !achieved?(@achievement_list[:purge])
         @achievements.push(@achievement_list[:purge])
       end
     else # check loser of the current fight
       if player[:avatar] == 'mcp.gif' && !achieved?(@achievement_list[:mcp])
         @achievements.push(@achievement_list[:mcp])
-      elsif player[:avatar] == 'jarvis' && !achieved?(@achievement_list[:faith])
+      elsif player[:avatar] == 'jarvis.png' && !achieved?(@achievement_list[:faith])
         @achievements.push(@achievement_list[:faith])
       end
     end
@@ -235,10 +236,10 @@ helpers do
 
   def iso_avatar?(avatar)
     isos_avatar = %w(
-      ophelia giles quorra ada calchas
-      young_iso_male young_iso_female old_iso_male
-      iso_female_1 iso_male_1 iso_male_2
-      iso_male_3 iso_female_3
+      ophelia.png giles.png quorra.png ada.png calchas.png
+      young_iso_male.png young_iso_female.png old_iso_male.png
+      iso_female_1.png iso_male_1.png iso_male_2.png
+      iso_male_3.png iso_female_3.png
     )
 
     iso_avatar = false
