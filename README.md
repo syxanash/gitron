@@ -31,7 +31,7 @@ Beware the program who loses will be subject to immediate **deresolution**!
 
 These are just a few achievements you can unlock in **Gitron**.
 
-Achievement | :sparkles:
+Achievement | Description
 ----------- | -----
 THE GRID | Enter The Grid
 FOUND ZUSE | Find a way to see Zuse *(the guy with the white hair)*
@@ -42,6 +42,10 @@ FAITH IN USERS | Dereze the poor Jarvis
 BETRAYAL | When Clu 2 derezzed Tron
 END OF LINE | Destroy Master Control Program
 THE CREATOR | ???
+
+## Characters
+
+Check out :zap: [THIS](https://github.com/syxanash/gitron/blob/master/public/img/ASSETS.md):zap: page for awesome pixel art!
 
 ![fight](http://i.imgur.com/q6kaw2f.gif)
 

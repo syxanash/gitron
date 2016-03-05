@@ -3,7 +3,7 @@
 This project is not associated with GitHub, [Tron franchise](https://en.wikipedia.org/wiki/Tron_(franchise)) or Disney.
 This app is licensed under the MIT terms. However all graphic creations are licensed under a _Creative Commons_ license.
 
-See __GITRON Pixel Art__ in ```public/img/LICENSE.md```
+See __GITRON Pixel Art__ in ```public/img/```
 
 ```
 The MIT License (MIT)
