@@ -3,7 +3,7 @@
 winner = @players[@winner_index]
 loser = @players[@loser_index]
 
-# choose which derezzed image to display 
+# choose which derezzed image to display
 # for the looser checking the disk color
 derezzed_img = 'derezzed-red.png'
 
@@ -34,7 +34,7 @@ character_name = winner[:avatar].gsub('_', ' ')[/.*(?=\..+$)/]
       <div id="disk" style="width: 77px; float: right; display: none;"></div>
     </div>
   <% else %>
-    <p><b><%= player[:repo] %></b> has been <b><span id="blinky">derezzed</span></b></p>
+    <p><b><%= player[:repo] %></b> has been <b><span class="blinky">derezzed</span></b></p>
 
     <% if player[:avatar] == 'jarvis.png' %>
       <p><span style="color: #ffd220"><i>"Death to the Users!"</i></span></p>
@@ -51,21 +51,19 @@ character_name = winner[:avatar].gsub('_', ' ')[/.*(?=\..+$)/]
 
 <script type="text/javascript">
 
-function getRandomColor() {
-    var colors = ['ffffff', '54d8ef', '00ff00', 'ffd220']
-    var color = '#' + colors[Math.floor(Math.random() * colors.length)];
-    return color;
-}
-
 $(document).ready(function() {
   setInterval(function(){
-      document.getElementById('blinky').style.color = getRandomColor();
+      $('.blinky').css("color", function(){
+        var colors = ['ffffff', '54d8ef', '00ff00', 'ffd220']
+        var color = '#' + colors[Math.floor(Math.random() * colors.length)];
+        return color;
+      });
   }, 100);
 });
 
 $('#disk').click(function(){
   noty({
-      text     : '<div id="info_box">program: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>" target="_blank"><%= winner[:repo] %></a> <br /> user: <%= winner[:name] %> <br /> branches: <%= winner[:branches] %> <br /> commits: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>/commits/master" target="_blank"><%= winner[:commits] %></a> <br /> character: <a href="http://tron.wikia.com/wiki/Special:Search?search=<%= character_name %>&fulltext=Search" target="_blank"><%= character_name %></a> <br /> score: <%= winner[:score] %></div>',
+      text     : '<div id="info_box">program: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>" target="_blank"><%= winner[:repo] %></a> <br /> user: <%= winner[:name] %> <br /> branches: <%= winner[:branches] %> <br /> commits: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>/commits/master" target="_blank"><%= winner[:commits] %></a> <br /> character: <a href="http://tron.wikia.com/wiki/Special:Search?search=<%= character_name %>&fulltext=Search" target="_blank"><%= character_name %></a> <br /> score: <span class="blinky"><%= winner[:score] %></span></div>',
       layout   : 'topRight',
       type     : 'information',
       theme    : 'custom',

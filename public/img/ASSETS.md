@@ -40,7 +40,7 @@ Tron 2.0 | Tron (1982) | Tron: Legacy
 Jet Bradley | Master Control Program | Kevin Flynn
 ![](characters/jet.png) | ![](characters/mcp.gif) | ![](characters/kevin_flynn.png)
 
-## Disks
+## Identity disc
 
 New grid | Old grid | Special
 ---------|----------|--------
@@ -62,9 +62,9 @@ Castor| Flynn | Infection
 
 ## Logo
 
-Recognizer | Logo 1 | Logo 2
------------|--------|-------
-![](characters-extra/recognizer.png) | ![](characters-extra/logo.png) | ![](characters-extra/special-logo.gif)
+Recognizer | Logo 1 | Logo 2 | Loading
+-----------|--------|--------|--------
+![](characters-extra/recognizer.png) | ![](characters-extra/logo.png) | ![](characters-extra/special-logo.gif) | ![](disk/loading.gif)
 
 ## License
 

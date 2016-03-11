@@ -3,39 +3,54 @@
 %>
 
 <div id="mascot">
+    <img id="loading_image" src="/img/disk/loading.gif" alt="loading" style="display: none;">
+
     <%# if some achievements are unlocked change the logo %>
     <% if achieved?('THE CREATOR') %>
-    <img src="/img/characters-extra/special-logo.gif" alt="super awesome logo">
+    <img id="logo_image" src="/img/characters-extra/special-logo.gif" alt="super awesome logo">
     <% elsif achieved?('BETRAYAL') %>
-    <img src="/img/characters-extra/logo.png" alt="awesome logo">
+    <img id="logo_image" src="/img/characters-extra/logo.png" alt="awesome logo">
     <% else %>
-    <img src="/img/characters-extra/recognizer.png" alt="logo">
+    <img id="logo_image" src="/img/characters-extra/recognizer.png" alt="logo">
     <% end %>
 </div>
 
 <div id="bit" style="position: absolute; top: 30px; left: 30px; display: none;"></div>
 
-<form method="GET" action="/">
+<form id="fight_form" method="GET" action="/">
 	<p>Enter a github repository (url works too)<p>
-    <input name="first_repo" size="20" type="text" placeholder="emacs-mirror/emacs" /><br>
+  <input name="first_repo" size="20" type="text" placeholder="emacs-mirror/emacs" /><br>
   <p>now enter a different github repository</p>
-    <input name="second_repo" size="20" type="text" placeholder="vim/vim" /><br><br>
+  <input name="second_repo" size="20" type="text" placeholder="vim/vim" /><br><br>
 
 	<input class="button_link" type="submit" value="fight!" />
 </form>
 
 <script type="text/javascript">
 
+// when user presses submit button
+// a loading gif appears
+$('#fight_form').submit(function(){
+    document.getElementById("logo_image").style.display = 'none';
+    document.getElementById("loading_image").style.display = 'inline-block';
+    $(':submit',this).attr('disabled','disabled');
+
+    return false;
+});
+
 $('#bit').hover(function(){
     $('#bit').removeClass().addClass('magictime foolishOut');
 });
 
-</script>
-
-<script type="text/javascript">
-
 $(document).ready(function() {
     setTimeout(function(){
+        var banner = [
+' _____ ___  ___  _  _   _ _            _',
+'|_   _| _ \\/ _ \\| \\| | | (_)_ _____ __| |',
+'  | | |   / (_) | .` | | | \\ V / -_|_-<_|',
+'  |_| |_|_\\\\___/|_|\\_| |_|_|\\_/\\___/__(_)'
+].join('\n');
+
         var div_name = "bit";
 
         var images = ["true.gif", "false.gif", "bit.gif"];
@@ -49,7 +64,7 @@ $(document).ready(function() {
 
         if (Math.floor(Math.random() * 2) > 0) {
             document.getElementById(div_name).style.display = 'block';
-            console.log("Grid: greetings user, for now Bit doesn't have a specific purpose on this grid, but he will in the future!")
+            console.log(banner + "\n\n" + "// END OF LINE");
         }
 
         $('#' + div_name).addClass('magictime foolishIn');
