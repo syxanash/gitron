@@ -81,14 +81,6 @@ Here listed a few things I used for developing this project.
 
 * look up for the source code if you're interested
 
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
-
 ## About
 
 This is just a summer project I developed after finishing a few exams for university. I really hope you like it as much as I liked creating it!
