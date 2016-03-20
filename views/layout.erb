@@ -11,7 +11,7 @@
   "#{@title}"
   %>
   </title>
-  
+
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -24,6 +24,18 @@
       <div id="logo">Welcome to <span style="color: #ffd220">GIT</span><span style="color: #54d8ef">RON</span></div>
       <%= yield %>
     </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  setInterval(function(){
+      $('.blinky').css("color", function(){
+        var colors = ['ffffff', '54d8ef', '00ff00', 'ffd220']
+        var color = '#' + colors[Math.floor(Math.random() * colors.length)];
+        return color;
+      });
+  }, 100);
+});
+</script>
 
 <%# show new achievements if unlocked %>
 

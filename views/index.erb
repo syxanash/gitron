@@ -23,7 +23,7 @@
   <p>now enter a different github repository</p>
   <input name="second_repo" size="20" type="text" placeholder="vim/vim" /><br><br>
 
-	<input class="button_link" type="submit" value="fight!" />
+	<input id="fight_button" class="button_link" type="submit" value="fight!" />
 </form>
 
 <script type="text/javascript">
@@ -43,6 +43,18 @@ $('#bit').hover(function(){
 });
 
 $(document).ready(function() {
+    // check if input fields have been filled if true
+    // add blinky class to the form button
+    $('#fight_form > :input').keyup(function() {
+        var $emptyFields = $('#fight_form :input').filter(function() {
+            return $.trim(this.value) === "";
+        });
+
+        if (!$emptyFields.length) {
+            $('#fight_button').addClass('blinky');
+        }
+    });
+
     setTimeout(function(){
         var banner = [
 ' _____ ___  ___  _  _   _ _            _',
