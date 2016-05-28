@@ -43,7 +43,7 @@ BETRAYAL | When Clu 2 derezzed Tron
 END OF LINE | Destroy Master Control Program
 THE CREATOR | ???
 
-## Characters
+## Assets
 
 Check out :zap: [THIS](https://github.com/syxanash/gitron/blob/master/public/img/ASSETS.md):zap: page for awesome pixel art!
 
