@@ -1,12 +1,1 @@
-<%
-twitter_link = "http://twitter.com/intent/tweet?url=http://gitron.herokuapp.com/&amp;text=Greetings%20programs%20let's%20fight%20on&amp;hashtags=gitron"
-
-# if user visits the fighting page then @players array will not
-# be nil in this case change the twitter sharing link
-
-unless @players.nil?
-  twitter_link = "http://twitter.com/intent/tweet?url=http://gitron.herokuapp.com/#{@players[0][:name]}/#{@players[0][:repo]}/vs/#{@players[1][:name]}/#{@players[1][:repo]}&amp;text=Check%20out%20#{@players[0][:repo].capitalize}%20vs%20#{@players[1][:repo].capitalize}%20on&amp;hashtags=gitron"
-end
-%>
-
-<p>&copy; Gitron <span id="comments">// up and running for <%= (Time.now.year-2014)*50 %>-<a href="http://tron.wikia.com/wiki/Cycle" target="_blank">cycles</a></span><br /><br /><a class="button_link" href="<%= twitter_link %>">share</a> <a class="button_link" href="https://github.com/syxanash/gitron">fork</a> <a class="button_link" href="http://savetron3.com" target="_blank">TRON3</a></p>
+<p>&copy; Gitron <span id="comments">// up and running for <%= (Time.now.year-2014)*50 %>-<a href="http://tron.wikia.com/wiki/Cycle" target="_blank">cycles</a></span><br /><br /><a class="button_link" href="https://github.com/syxanash/gitron/blob/master/public/img/ASSETS.md">pixel-art</a> <a class="button_link" href="https://github.com/syxanash/gitron">fork</a> <a class="button_link" href="https://www.reddit.com/r/tron" target="_blank">/r/tron</a></p>
