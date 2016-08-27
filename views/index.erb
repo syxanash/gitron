@@ -32,7 +32,15 @@
 // a loading gif appears
 $('#fight_form').submit(function(){
     document.getElementById("logo_image").style.display = 'none';
-    document.getElementById("loading_image").style.display = 'inline-block';
+
+    // this stuff was done due to an annoying bug on chrome
+    // https://stackoverflow.com/questions/10730212/proper-way-to-reset-a-gif-animation-with-displaynone-on-chrome
+    var $loading_img = $('#loading_image');
+    $loading_img.show();
+    setTimeout(function() {
+        $loading_img.attr('src', '/img/disk/loading.gif');
+    }, 0);
+
     $(':submit',this).attr('disabled','disabled');
 
     return true;
