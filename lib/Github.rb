@@ -1,4 +1,6 @@
 require 'octokit'
+require 'nokogiri'
+require 'rest-client'
 
 class RepoNotFoundError < StandardError; end
 class RateLimitError < StandardError; end
@@ -44,26 +46,41 @@ class Github
   def set_repository(owner, repo)
     @my_repository = "#{owner}/#{repo}"
 
+    # unfortunately due to octokit limitations some info are obtained
+    # directly from repository web page thus parsing the HTML
+    # to create a nokogiri document
+    html_content = RestClient.get("https://github.com/#{@my_repository}")
+    nokogiri_doc = Nokogiri::HTML::Document.parse(html_content)
+
+    # count the number of commits and releases
+    stats = []
+    nokogiri_doc.css('.text-emphasized').each do |num|
+      stats.push(num.text.strip.gsub(',', ''))
+    end
+
+    # build repository information
+    @repo_info = {
+      size: @client.repository(@my_repository).size,
+      forks: @client.repository(@my_repository).forks_count,
+      stars: @client.repository(@my_repository).stargazers_count,
+      date: @client.repository(@my_repository).created_at,
+      commits: stats[0],
+      branches: stats[1],
+      releases: stats[2],
+      contribs: stats[3]
+    }
+
     raise RepoNotFoundError, 'repository does not exist!' unless @client.repository? @my_repository
   end
 
   # Public: get branches and number of commits for a repository
   #
-  # Returns number of branchesPu
+  # Returns number of branches
   # Returns number of commits
   def additional_disk_info
     raise "repository hasn't been set!" unless @my_repository
 
-    # get the number of branches for a repository
-    branches = @client.branches(@my_repository).size
-
-    # get the number of commits, if number is higher than 100
-    # than will be returned the string 100+
-
-    commits_number = @client.commits(@my_repository).size
-    commits_string = commits_number >= 100 ? '100+' : commits_number
-
-    return branches, commits_string
+    return @repo_info[:branches], @repo_info[:commits]
   end
 
 
@@ -75,27 +92,26 @@ class Github
     raise "repository hasn't been set!" unless @my_repository
 
     issues ||= 0
-    score ||= 0
+    main_score ||= 0
 
     if @client.repository(@my_repository).has_issues?
       issues = @client.issues(@my_repository).size
     end
 
-    player = {
-      size: @client.repository(@my_repository).size,
-      commit: @client.commits(@my_repository).size,
-      forks: @client.repository(@my_repository).forks_count
-    }
+    # calculate score by adding repository size releases and
+    # contributors. If contributors number is "infinity" then
+    # use the forks number instead (thanks torvalds/linux)
 
-    # calculate score
+    main_score = @repo_info[:size].to_i +
+      @repo_info[:releases].to_i +
+      (@repo_info[:contribs] == '∞' ?
+        @repo_info[:forks].to_i : @repo_info[:contribs].to_i)
 
-    positive = player[:size] + player[:commit] + player[:forks]
-
-    if issues < positive
-      score = positive - issues
+    if issues < main_score
+      main_score -= issues
     end
 
-    score
+    main_score
   end
 
   # Public: generate avatar based on public repository information.
@@ -110,11 +126,7 @@ class Github
     json_file_content = File.read(AVATAR_LIST)
     avatars = JSON.parse(json_file_content)
 
-    stars = @client.repository(@my_repository).stargazers_count
-    date = @client.repository(@my_repository).created_at
-
     # check if repo owner is github staff
-
     owner = @my_repository.split('/')[0]
     github_member = @client.organization_member?('github', owner)
 
@@ -124,7 +136,7 @@ class Github
 
     if github_member
       grid = ISOS_AVATARS
-    elsif date.to_s > '2010-12-29' # :D
+    elsif @repo_info[:date].to_s > '2010-12-29' # :D
       grid = NEW_GRID_AVATARS
     end
 
@@ -132,7 +144,7 @@ class Github
     disk_color ||= ''
 
     avatars.each do |score, item|
-      if stars >= score.to_i
+      if @repo_info[:stars] >= score.to_i
         if item.is_a?(Array)
           item[grid].each do |name, disk|
             avatar = name

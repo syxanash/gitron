@@ -14,9 +14,9 @@ This is a web game based on [TRON](http://en.wikipedia.org/wiki/Tron) universe. 
 
 The score is based on:
 
-* number of commits
 * repository size
-* number of forks
+* number of releases
+* number of contributors
 
 **issues** instead will be subtracted to the main score of your repository.
 The avatar is generated based on your repository **stars**, more stars it gets more important is the character generated :sunglasses:
