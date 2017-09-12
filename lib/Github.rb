@@ -46,6 +46,10 @@ class Github
   def set_repository(owner, repo)
     @my_repository = "#{owner}/#{repo}"
 
+    unless @client.repository? @my_repository
+      raise RepoNotFoundError, 'repository does not exist!'
+    end
+
     # unfortunately due to octokit limitations some info are obtained
     # directly from repository web page thus parsing the HTML
     # to create a nokogiri document
@@ -69,8 +73,6 @@ class Github
       releases: stats[2],
       contribs: stats[3]
     }
-
-    raise RepoNotFoundError, 'repository does not exist!' unless @client.repository? @my_repository
   end
 
   # Public: get branches and number of commits for a repository
