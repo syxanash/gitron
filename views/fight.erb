@@ -61,7 +61,7 @@ end
 
 $('#disk').click(function(){
   noty({
-      text     : '<div id="info_box">program: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>" target="_blank"><%= winner[:repo] %></a> <br /> user: <%= winner[:name] %> <br /> branches: <%= winner[:branches] %> <br /> commits: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>/commits/master" target="_blank"><%= winner[:commits] %></a> <br /> character: <a href="http://tron.wikia.com/wiki/Special:Search?search=<%= character_name %>&fulltext=Search" target="_blank"><%= character_name %></a> <br /> score: <span class="blinky"><%= winner[:score] %></span></div>',
+      text     : '<div id="info_box">program: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>" target="_blank"><%= winner[:repo] %></a> <br /> user: <%= winner[:name] %> <br /> branches: <%= winner[:branches] %> <br /> contributors: <a href="http://github.com/<%= winner[:name] %>/<%= winner[:repo] %>/commits/master" target="_blank"><%= winner[:contribs] %></a> <br /> character: <a href="http://tron.wikia.com/wiki/Special:Search?search=<%= character_name %>&fulltext=Search" target="_blank"><%= character_name %></a> <br /> score: <span class="blinky"><%= winner[:score] %></span></div>',
       layout   : 'topRight',
       type     : 'information',
       theme    : 'custom',

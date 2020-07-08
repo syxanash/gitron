@@ -1,6 +1,4 @@
 require 'octokit'
-require 'nokogiri'
-require 'rest-client'
 
 class RepoNotFoundError < StandardError; end
 class RateLimitError < StandardError; end
@@ -50,39 +48,54 @@ class Github
       raise RepoNotFoundError, 'repository does not exist!'
     end
 
-    # unfortunately due to octokit limitations some info are obtained
-    # directly from repository web page thus parsing the HTML
-    # to create a nokogiri document
-    html_content = RestClient.get("https://github.com/#{@my_repository}")
-    nokogiri_doc = Nokogiri::HTML::Document.parse(html_content)
-
-    # count the number of commits and releases
-    stats = []
-    nokogiri_doc.css('.text-emphasized').each do |num|
-      stats.push(num.text.strip.gsub(',', ''))
-    end
-
     # build repository information
     @repo_info = {
       size: @client.repository(@my_repository).size,
       forks: @client.repository(@my_repository).forks_count,
       stars: @client.repository(@my_repository).stargazers_count,
       date: @client.repository(@my_repository).created_at,
-      commits: stats[0],
-      branches: stats[1],
-      releases: stats[2],
-      contribs: stats[3]
+      branches: calc_total(@my_repository, 'branches'),
+      releases: calc_total(@my_repository, 'releases'),
+      contribs: calc_total(@my_repository, 'contribs')
     }
   end
 
-  # Public: get branches and number of commits for a repository
+# Thank you snowe wherever you are!
+# https://stackoverflow.com/a/43374518
+def calc_total(repo, repo_info)
+  begin
+    number_of_items_in_first_page = @client.send(repo_info, repo).size
+    repo_sum = 0
+    if number_of_items_in_first_page >= 100
+        links = @client.last_response.rels
+
+        unless links.empty?
+            last_page_url = links[:last].href
+
+            /.*page=(?<page_num>\d+)/ =~ last_page_url
+            repo_sum += (page_num.to_i - 1) * 100 # we add the last page manually
+            repo_sum += links[:last].get.data.size
+        end
+    else
+        repo_sum += number_of_items_in_first_page
+    end
+  rescue Octokit::Forbidden
+    # used in rare cases like torvalds/linux
+
+    repo_sum = '∞'
+  end
+
+  repo_sum
+end
+
+  # Public: get branches and number of contributors for a repository
   #
   # Returns number of branches
-  # Returns number of commits
+  # Returns number of contributors
   def additional_disk_info
     raise "repository hasn't been set!" unless @my_repository
 
-    return @repo_info[:branches], @repo_info[:commits]
+    return @repo_info[:branches], @repo_info[:contribs]
   end
 
 

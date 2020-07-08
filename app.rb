@@ -55,7 +55,7 @@ get '/errors/limit' do
   erb :error_rate_limit
 end
 
-before %r{^\/errors\/(input|reponame|ragequit)} do
+before %r{\/errors\/(input|reponame|ragequit)} do
   unless achieved?(@achievement_list[:zuse])
     @achievements.push(@achievement_list[:zuse])
     save(@achievements)
@@ -125,7 +125,7 @@ get '/:first_name/:first_repo/vs/:second_name/:second_repo/?' do
 
       player[:score] = github.score
       player[:avatar], player[:disk] = github.generate_avatar
-      player[:branches], player[:commits] = github.additional_disk_info
+      player[:branches], player[:contribs] = github.additional_disk_info
     rescue RepoNotFoundError
       redirect '/errors/reponame'
     end
