@@ -143,7 +143,7 @@ end
 
     # check if repo owner is github staff
     owner = @my_repository.split('/')[0]
-    github_member = @client.organization_member?('github', owner)
+    github_member = @client.user(owner).company == 'GitHub'
 
     grid ||= OLD_GRID_AVATARS
 
