@@ -58,7 +58,7 @@ Steady | False | true
 
 Castor| Flynn | Infection
 ------|-------|----------
-![](characters-extra/castor.gif) | ![](characters-extra/flynn-young.png) | ![](characters-extra/infected-program.png)
+![](characters-extra/castor.gif) | ![](characters-extra/flynn-young.png) | ![](characters-extra/infected-program.png) ![](characters-extra/infection.png)
 
 ## Logo
 

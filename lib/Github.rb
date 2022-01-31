@@ -60,33 +60,33 @@ class Github
     }
   end
 
-# Thank you snowe wherever you are!
-# https://stackoverflow.com/a/43374518
-def calc_total(repo, repo_info)
-  begin
-    number_of_items_in_first_page = @client.send(repo_info, repo).size
-    repo_sum = 0
-    if number_of_items_in_first_page >= 100
-        links = @client.last_response.rels
+  # Thank you snowe wherever you are!
+  # https://stackoverflow.com/a/43374518
+  def calc_total(repo, repo_info)
+    begin
+      number_of_items_in_first_page = @client.send(repo_info, repo).size
+      repo_sum = 0
+      if number_of_items_in_first_page >= 100
+          links = @client.last_response.rels
 
-        unless links.empty?
-            last_page_url = links[:last].href
+          unless links.empty?
+              last_page_url = links[:last].href
 
-            /.*page=(?<page_num>\d+)/ =~ last_page_url
-            repo_sum += (page_num.to_i - 1) * 100 # we add the last page manually
-            repo_sum += links[:last].get.data.size
-        end
-    else
-        repo_sum += number_of_items_in_first_page
+              /.*page=(?<page_num>\d+)/ =~ last_page_url
+              repo_sum += (page_num.to_i - 1) * 100 # we add the last page manually
+              repo_sum += links[:last].get.data.size
+          end
+      else
+          repo_sum += number_of_items_in_first_page
+      end
+    rescue Octokit::Forbidden
+      # used in rare cases like torvalds/linux
+
+      repo_sum = '∞'
     end
-  rescue Octokit::Forbidden
-    # used in rare cases like torvalds/linux
 
-    repo_sum = '∞'
+    repo_sum
   end
-
-  repo_sum
-end
 
   # Public: get branches and number of contributors for a repository
   #
