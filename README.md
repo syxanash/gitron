@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://gitron.herokuapp.com"><img src="http://i.imgur.com/6BG1Msb.png" alt="gitron logo" /></a>
+  <a href="http://gitron.fly.dev"><img src="http://i.imgur.com/6BG1Msb.png" alt="gitron logo" /></a>
 </p>
 
 # Gitron

@@ -16,10 +16,10 @@ character_name = winner[:avatar].gsub('_', ' ')[/.*(?=\..+$)/]
 
 # if user visits the fighting page then @players array will not
 # be nil in this case change the twitter sharing link
-twitter_link = "https://twitter.com/home?status=https://gitron.herokuapp.com/%20Greetings%20programs%20let's%20fight%20on%20%23GITRON"
+twitter_link = "https://twitter.com/home?status=https://gitron.fly.dev/%20Greetings%20programs%20let's%20fight%20on%20%23GITRON"
 
 unless @players.nil?
-  twitter_link = "https://twitter.com/home?status=Check%20out%20#{@players[0][:repo].capitalize}%20vs%20#{@players[1][:repo].capitalize}%20on%20%23GITRON%20http://gitron.herokuapp.com/#{@players[0][:name]}/#{@players[0][:repo]}/vs/#{@players[1][:name]}/#{@players[1][:repo]}"
+  twitter_link = "https://twitter.com/home?status=Check%20out%20#{@players[0][:repo].capitalize}%20vs%20#{@players[1][:repo].capitalize}%20on%20%23GITRON%20http://gitron.fly.dev/#{@players[0][:name]}/#{@players[0][:repo]}/vs/#{@players[1][:name]}/#{@players[1][:repo]}"
 end
 %>
 
