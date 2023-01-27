@@ -1,6 +1,7 @@
 # GITRON Pixel Art
 
-Here are a few pixel art I draw for Gitron web app
+Here are a few pixel art I draw for Gitron web app.<br />
+To find out more about the characters checkout the [Tron Wiki](https://tron.fandom.com/wiki/Tron_Wiki)
 
 # Avatar API
 
