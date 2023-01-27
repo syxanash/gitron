@@ -15,6 +15,12 @@ before do
 
   @achievements = Array.new
 
+  begin
+    @github_client = Github.new(GITHUB_API_KEY)
+  rescue RateLimitError
+    redirect '/errors/limit'
+  end
+
   @achievement_list = {
     zuse:  'FOUND ZUSE',
     grid:  'THE GRID',
@@ -113,19 +119,13 @@ get '/:first_name/:first_repo/vs/:second_name/:second_repo/?' do
   @players.push(name: first_name, repo: first_repo)
   @players.push(name: second_name, repo: second_repo)
 
-  begin
-    github = Github.new(GITHUB_API_KEY)
-  rescue RateLimitError
-    redirect '/errors/limit'
-  end
-
   @players.each do |player|
     begin
-      github.set_repository(player[:name], player[:repo])
+       @github_client.set_repository(player[:name], player[:repo])
 
-      player[:score] = github.score
-      player[:avatar], player[:disk] = github.generate_avatar
-      player[:branches], player[:contribs] = github.additional_disk_info
+      player[:score] =  @github_client.score
+      player[:avatar], player[:disk] =  @github_client.generate_avatar
+      player[:branches], player[:contribs] =  @github_client.additional_disk_info
     rescue RepoNotFoundError
       redirect '/errors/reponame'
     end
@@ -192,6 +192,32 @@ get '/:first_name/:first_repo/vs/:second_name/:second_repo/?' do
   # yes, I warned you it was shit...
 
   erb :fight
+end
+
+get '/avatar/:user/:repository' do
+  user, repository = params[:user], params[:repository]
+
+  begin
+    @github_client.set_repository(user, repository)
+    avatar, disk =  @github_client.generate_avatar
+
+    send_file "public/img/characters/#{avatar}"
+  rescue RepoNotFoundError
+    send_file "public/img/characters-extra/castor.gif", :type => :gif
+  end
+end
+
+get '/avatar/disk/:user/:repository' do
+  user, repository = params[:user], params[:repository]
+
+  begin
+    @github_client.set_repository(user, repository)
+    avatar, disk =  @github_client.generate_avatar
+
+    send_file "public/img/disk/#{disk}"
+  rescue RepoNotFoundError
+    send_file "public/img/characters-extra/castor.gif", :type => :gif
+  end
 end
 
 helpers do
