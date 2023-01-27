@@ -13,6 +13,8 @@ https://gitron.fly.dev/avatar/:github_username/:github_repository_name
 https://gitron.fly.dev/avatar/disk/:github_username/:github_repository_name
 ```
 
+Example: http://gitron.fly.dev/avatar/syxanash/gitron
+
 ## Fighting Characters
 
 Old grid programs | New grid programs | ISOs
