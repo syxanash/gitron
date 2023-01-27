@@ -4,7 +4,7 @@ require 'base64'
 require './lib/Github'
 
 # Public: github.com API key used in order to have higher rate limit
-GITHUB_API_KEY = 'PLACE YOUR GITHUB API KEY HERE!!!'.freeze
+GITHUB_API_KEY = ENV.fetch('GITHUB_API_KEY')
 
 COOKIE_NAME = 'ach'.freeze
 

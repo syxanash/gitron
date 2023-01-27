@@ -1,10 +1,6 @@
 source "https://rubygems.org"
-ruby "3.1.2"
+ruby "3.2.0"
 
 gem 'octokit'
 gem 'sinatra'
-
-gem "puma"
-gem "falcon"
-gem "thin"
-gem "webrick"
+gem 'thin'
