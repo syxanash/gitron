@@ -1,6 +1,16 @@
 # GITRON Pixel Art
 
-Here are a few pixel art I draw for this small web app.
+Here are a few pixel art I draw for Gitron web app
+
+# Avatar API
+
+If you'd like to see your own GitHub repository as a Tron character just query these endpoints:
+
+```
+https://gitron.fly.dev/avatar/:github_username/:github_repository_name
+
+https://gitron.fly.dev/avatar/disk/:github_username/:github_repository_name
+```
 
 ## Fighting Characters
 
