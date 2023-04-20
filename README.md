@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://gitron.fly.dev"><img src="http://i.imgur.com/6BG1Msb.png" alt="gitron logo" /></a>
+  <a href="http://gitron.fly.dev"><img src="https://i.imgur.com/QUvr1X2.png" alt="gitron logo" /></a>
 </p>
 
 # Gitron
@@ -25,7 +25,7 @@ Winner is chosen according to the higher score of the two programs fighting.
 
 Beware the program who loses will be subject to immediate **deresolution**!
 
-![sark](http://i.imgur.com/3llHbBR.gif)
+![sark](https://i.imgur.com/LPZ5XlX.gif)
 
 ## Achievements
 
@@ -47,7 +47,7 @@ THE CREATOR | ???
 
 Check out :zap: [THIS](https://github.com/syxanash/gitron/blob/master/public/img/ASSETS.md):zap: page for awesome pixel art!
 
-![fight](http://i.imgur.com/q6kaw2f.gif)
+![fight](https://i.imgur.com/vBbmmIh.gif)
 
 ## Installation
 
